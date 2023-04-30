@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import AddPlant from './components/AddPlant';
+import "bootstrap/dist/css/bootstrap.min.css"
 import './App.css';
 
 function App() {
+  const [plants, setPlants] = useState("")
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home plants={plants} setPlants={setPlants}/>} />
+        <Route path='/addplant' element={<AddPlant setPlants={setPlants}/>} />
+      </Routes>
+    </BrowserRouter>
+    </>
   );
 }
 
