@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function AddPlant ({setPlants}) {
   const [plantName, setPlantName] = useState('')
-  const [water, setWater] = useState('')
+  const [waterFrequency, setWater] = useState('')
   const [humidity, setHumidity] = useState('')
   const [light, setLight] = useState('')
   
@@ -12,7 +12,7 @@ export default function AddPlant ({setPlants}) {
     fetch('https://plant-project-api.web.app/plants',{
       method: "POST",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({plantName, water, light, humidity})
+      body: JSON.stringify({plantName, waterFrequency, light, humidity})
     })
     .then(res => res.json())
     .then(data => {
@@ -39,7 +39,7 @@ export default function AddPlant ({setPlants}) {
         <label htmlFor="waterFrequency">Watering Frequency
           <input
             type="text"
-            value={water}
+            value={waterFrequency}
             onChange={(e) => {setWater(e.target.value)}} />
         </label>
         <br/>
